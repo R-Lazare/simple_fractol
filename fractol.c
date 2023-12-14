@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rluiz <rluiz@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 18:08:21 by rluiz             #+#    #+#             */
-/*   Updated: 2023/12/14 15:03:53 by rluiz            ###   ########.fr       */
+/*   Created: 2023/12/14 15:06:12 by rluiz             #+#    #+#             */
+/*   Updated: 2023/12/14 15:09:00 by rluiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 
 	img.arena = arena_init(2147483647);
 	if (argc == 1)
-		printf("Usage: ./fractol [mandelbrot/julia/burningship] [c1] [c2]\n");
+		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 57);
 	else if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
 		main_mandelbrot(img);
 	else if (!ft_strcmp(argv[1], "julia") && argc == 4 && check_args(argv[2],
@@ -113,6 +113,6 @@ int	main(int argc, char **argv)
 		main_mandelbrot(img);
 	}
 	else
-		printf("Usage: ./fractol [mandelbrot/julia/burningship] [c1] [c2]\n");
+		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 57);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rluiz <rluiz@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:37:11 by rluiz             #+#    #+#             */
-/*   Updated: 2023/12/14 15:02:32 by rluiz            ###   ########.fr       */
+/*   Updated: 2023/12/14 15:10:54 by rluiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,11 @@ typedef struct s_data
 	double	c2;
 	double	xmax;
 	int		colorint;
-	double	precision;
 	double	ymin;
 	double	ymax;
 	double	x0;
 	double	y0;
-	int		modf;
 	void	*win;
-	double	cos;
-	double	*logt;
 }			t_data;
 
 typedef struct nb_c
