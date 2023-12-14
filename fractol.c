@@ -6,7 +6,7 @@
 /*   By: rluiz <rluiz@student.42lehavre.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:06:12 by rluiz             #+#    #+#             */
-/*   Updated: 2023/12/14 15:09:00 by rluiz            ###   ########.fr       */
+/*   Updated: 2023/12/14 15:44:05 by rluiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	main_mandelbrot(t_data img)
 	img.colorint = 7;
 	img.ymin = -1;
 	img.ymax = 1;
-	img.burning_ship = 0;
 	img.x0 = (img.xmax - img.xmin) / 2;
 	img.y0 = (img.ymax - img.ymin) / 2;
 	img.colorset = getlist(img.colorint, img, 1000);
@@ -91,15 +90,24 @@ int	check_args(char *c1, char *c2)
 	return (1);
 }
 
+void	main_burningship(t_data img)
+{
+	img.burning_ship = 1;
+	main_mandelbrot(img);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	img;
 
 	img.arena = arena_init(2147483647);
 	if (argc == 1)
-		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 57);
+		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 42);
 	else if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
+	{
+		img.burning_ship = 0;
 		main_mandelbrot(img);
+	}
 	else if (!ft_strcmp(argv[1], "julia") && argc == 4 && check_args(argv[2],
 			argv[3]))
 	{
@@ -108,11 +116,9 @@ int	main(int argc, char **argv)
 		main_julia(img);
 	}
 	else if (!ft_strcmp(argv[1], "burningship") && argc == 2)
-	{
-		img.burning_ship = 1;
-		main_mandelbrot(img);
-	}
+		main_burningship(img);
 	else
-		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 57);
+		write(1, "Usage: ./fractol [fractalname] [c1] [c2]\n", 42);
+	arena_destroy(img.arena);
 	return (0);
 }
